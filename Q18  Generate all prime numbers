@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdbool.h>
+bool isPrime(int n, int i) {
+    if (n <= 2) return (n == 2);
+    if (n % i == 0) return false;
+    if (i * i > n) return true;
+    return isPrime(n, i + 1);
+}
+void printPrimes(int n) {
+    if (n < 2) return;
+    printPrimes(n - 1);
+    if (isPrime(n, 2)) {
+        printf("%d ", n);
+    }
+}
+int main() {
+    int n = 20;
+    printf("Prime numbers up to %d:\n", n);
+    printPrimes(n);
+    printf("\n");
+    return 0;
+}
